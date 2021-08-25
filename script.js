@@ -55,13 +55,13 @@ module.exports = function greet(storage) {
         }
     }
     function store(names) {
-        if(nameStore[names] === undefined){
-            nameStore[names] =  1
+        if (nameStore[names] === undefined) {
+            nameStore[names] = 1
         }
         else {
             nameStore[names]++
         }
-      
+
     }
     function countNames() {
         var objNames = Object.keys(nameStore)
@@ -73,7 +73,9 @@ module.exports = function greet(storage) {
     function storeArray() {
         return nameStore
     }
+    function resetBTn() {
 
+    }
 
 
     return {
@@ -87,7 +89,8 @@ module.exports = function greet(storage) {
         countNames,
         timer,
         storeArray,
-        storageError
+        storageError,
+        resetBTn
 
     }
 

@@ -9,8 +9,6 @@ const app = express();
 const greetApp = greet();
 // const moment =require('moment')
 // moment().format();
-let counter = 0;
-
 
 app.use(express.static('public'));
 // parse application/x-www-form-urlencoded
@@ -59,7 +57,7 @@ app.post('/greet', function (req, res) {
         }
     }
 
-    res.render('index', { msg, counter : greetApp.countNames() })
+    res.render('index', { msg, counter : greetApp.countNames(), })
 });
 
 
