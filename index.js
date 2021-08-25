@@ -9,6 +9,7 @@ const app = express();
 const greetApp = greet();
 // const moment =require('moment')
 // moment().format();
+let counter = 0;
 
 
 app.use(express.static('public'));
@@ -58,7 +59,7 @@ app.post('/greet', function (req, res) {
         }
     }
 
-    res.render('index', { msg, counter : greetApp() })
+    res.render('index', { msg, counter : greetApp.countNames() })
 });
 
 
@@ -89,16 +90,8 @@ res.render('counter', {
 
 })
 
-
-
-
-
-2
-
-
-
-const PORT = process.env.PORT || 3013;
+const PORT = process.env.PORT || 3014;
 
 app.listen(PORT, function () {
-    console.log("app started ")
+    console.log("app started at", PORT)
 });
