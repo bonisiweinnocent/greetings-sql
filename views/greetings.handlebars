@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+
+<div class="row">
+    <h1>Greeted Names</h1>
+
+{{#each namesGreeted }}
+<a href="/counter/{{@key}}"><li>{{@key}}</li></a>
+{{/each}}
+        
+        </ul>
+ <br>
+ <br>
+ <br>
+ <a href="/">Back</a>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,289 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0; 
+}
+body {
+
+background-color: dimgray;
+/* padding: 1rem;
+margin: 0.5rem;
+border: 14px solid yellow;
+/* border-bottom-left-radius: 12rem; */
+/* box-shadow: 10px 10px;  */
+    
+   
+}
+.head h1{
+
+   padding-bottom: 2rem;
+   padding-left: 23rem;
+   margin-top: 5rem;
+   font-size: 3rem;
+}
+.area{
+    display: flex;
+    flex-direction: column-reverse;
+    /* justify-content: space-around; */
+    justify-content: center;
+     
+}
+.area h5{
+    padding-left: 26rem;
+   
+}
+.area .count{
+    display: flex;
+}
+.emptyform .empty{
+    padding: 46rem;
+   
+
+}
+.please{
+    padding-left: 26rem;
+
+}
+.row h5{
+    padding-left: 26rem;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+    
+}
+.nameString{
+    border-color: red;
+    border-width: 5px;
+    margin-left: 21rem;
+    margin-right: 21rem;
+    padding-left: 13rem;
+    /* padding-right: 3rem; */
+
+}
+.count{
+    padding-left: 35rem;
+}
+.radios{
+    width: 27px;
+    padding-left: 26rem;
+   
+}
+
+.container{
+    padding: 1rem;
+    margin: 2rem;
+    border: 14px solid yellow;
+    /* border-bottom-left-radius: 12rem; */
+    box-shadow: 10px 10px;
+}
+
+.red-text{
+    color: red;
+    padding-left: 25.8rem;
+    
+
+}
+.emptyform{
+    font-size: 0.5rem;
+   color: red;
+   padding-left:23rem;
+}
+.rose{
+    font-size: 2rem;
+   color: yellow;
+   padding-left:25rem;
+}
+.yel-text{
+   color: yellow;
+   padding-left: 25.8rem;
+   font-weight: bolder;
+}
+.yellow-text{
+    color: yellow;
+    text-shadow: black;
+}
+.greetbtn button{
+    background-color: #F08080; 
+   border-radius: 3rem;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+ 
+    font-size: 16px;
+    margin: 1.5rem;
+    transition-duration: 0.4s;
+    cursor: pointer;
+   
+   
+}
+.greetbtn {
+    margin-left: 45rem;
+    display: flex;
+  
+
+}
+
+.resetbtn button{
+    background-color: #F08080; 
+    border-radius: 3rem;
+     color: white;
+     padding: 0.5rem;
+     text-align: center;
+  
+     font-size: 16px;
+     margin: 1.5rem;
+     transition-duration: 0.4s;
+     cursor: pointer;
+    
+
+}
+.resetbtn{
+    margin-left: 45rem;
+}
+.test{
+    margin-left: 30rem;
+    margin-bottom: 2rem;
+
+}
+/* media query */
+
+
+@media  screen and (max-width:300px)  {
+    /* body{
+margin: 5px;
+    } */
+.head h1{
+    padding-bottom: 0.5rem;
+    padding-left: 7rem;
+    margin-top: 2rem;
+    font-size: 10px;
+ 
+  
+}
+
+.area h2{
+    padding-left: 7rem;
+    font-size: 10px;
+   
+}
+.emptyform{
+    padding-left: 4rem;
+    font-size: 12px;
+
+}
+.row h2{
+    padding-left: 10rem;
+    padding-top: 5px;
+    margin-bottom: 2rem;
+    font-size: 10px;
+}
+.nameString{
+    border-color: red;
+    border-width: 3px;
+    margin-left: 1rem;
+    /* margin-right: 1rem; */
+    padding-left: 1rem;
+    /* padding-right: 8rem; */
+
+}
+.count{
+    padding-left: 5rem;
+}
+.radios{
+    width: 13px;
+    padding-left: 4rem;
+   
+}
+
+.emptyArea{
+    padding: 0.5rem;
+    background: #05e210;
+    width: 45%;
+    margin-left: 5rem;
+    margin-bottom: 5px;
+}
+.container{
+    padding: 1rem;
+    margin: 0.5rem;
+}
+.greetbtn {
+    margin-left: 5rem;
+}
+.resetbtn{
+    margin-left: 5rem;
+}
+
+}
+
+    @media screen and (max-width: 687px) and (min-width: 291px) {
+        body{
+            margin: 100%;
+                }
+            .head {
+                 padding-bottom: 0.5rem;
+                 padding-left: 7rem; 
+                 margin-top: 2rem;
+                font-size: 8rem; 
+             
+              
+            }
+            
+            .area h2{
+                padding-left: 7rem;
+                font-size: 10px;
+               
+            }
+            .emptyform{
+                padding-left: 4rem;
+                font-size: 12px;
+            
+            }
+            .row h2{
+                padding-left: 10rem;
+                padding-top: 5px;
+                margin-bottom: 2rem;
+                font-size: 10px;
+            }
+            .nameString{
+            
+                border-width: 3px;
+                margin-left: -1rem;
+                
+                /* margin-right: 1rem; */
+                padding: -55rem;
+                padding-right: 8rem;
+            
+            }
+            .count{
+                padding-left: 5rem;
+            }
+            .radios{
+                width: 13px;
+                padding-left: 4rem;
+               
+            }
+            
+            .emptyArea{
+                padding: 0.5rem;
+                background: #05e210;
+                width: 45%;
+                margin-left: 5rem;
+                margin-bottom: 5px;
+            }
+            .container{
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            .greetbtn {
+                margin-left: 5rem;
+            }
+            .resetbtn{
+                margin-left: 5rem;
+            }
+            .radioBtn button{ 
+                width: 5px;
+                display: flex;
+            }
+            
+                }
+              
+
+            
