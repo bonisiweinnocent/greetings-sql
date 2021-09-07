@@ -125,7 +125,7 @@ border: 14px solid yellow;
 
 }
 
-.resetbtn button{
+.resetbtn button .actionBtn{
     background-color: #F08080; 
     border-radius: 3rem;
      color: white;

@@ -1,10 +1,10 @@
-module.exports = function greet(storage) {
+module.exports = function greet(pool) {
 
 
     var msg = "";
     var nameStore = {};
 
-    function greetings(message, param) {
+  async  function greetings(message, param) {
 
         var param1 = param.charAt(0).toUpperCase() + param.slice(1).toLowerCase();
         if (message == "Swahili") {
@@ -27,53 +27,42 @@ module.exports = function greet(storage) {
     function getMsg() {
         return msg
     }
-    function bothError(name, language) {
-        if (name === "" && !language) {
-            return "Please type in your name and select a language."
+    // async function bothError(name, language) {
+    //     let empty = await pool.query('')
+    //     if (name === "" && !language) {
+    //         return empty.rows;
 
-        }
+    //     }
+    // }
+
+
+    async function store(userName) {
+        let names = await pool.query('INSERT INTO  users(name,counter) VALUES ($1,$2)', [userName, 1])
+        return names.rows;
     }
+    
 
 
-    function errorsNoName(name) {
-        if (!name) {
-            return "Please type in your name below."
 
-        }
-    }
+    async function countNames() {
+        let objNames = await pool.query('SELECT COUNT (*) FROM users')
 
-    function languageErrors(lang) {
-        if (!lang) {
-            return "Please select a language."
+        return objNames.rowCount;
 
-        }
-    }
-    function storageError(click) {
-        if (click) {
-            return "You have successfully cleared your local storage"
 
-        }
-    }
-    function store(names) {
-        if (nameStore[names] === undefined) {
-            nameStore[names] = 1
-        }
-        else {
-            nameStore[names]++
-        }
-
-    }
-    function countNames() {
-        var objNames = Object.keys(nameStore)
-        return objNames.length
     }
     function timer() {
         return "";
     }
-    function storeArray() {
-        return nameStore
+
+    async function storeArray() {
+        let allNames = await pool.query('SELECT * FROM USERS')
+        return allNames.rows;
     }
-    function resetBTn() {
+
+    async function resetBTn() {
+        let reset = await pool.query('DELETE * FROM users')
+        return reset.rows;
 
     }
 
@@ -81,15 +70,15 @@ module.exports = function greet(storage) {
     return {
         greetings,
         getMsg,
-        errorsNoName,
-        languageErrors,
-        bothError,
+        // errorsNoName,
+        // languageErrors,
+        // bothError,
         errorSpecial,
         store,
         countNames,
         timer,
         storeArray,
-        storageError,
+        // storageError,
         resetBTn
 
     }
