@@ -55,5 +55,4 @@ describe('The greetings web app', function () {
     after(function(){
         pool.end();
     });
-
 });
