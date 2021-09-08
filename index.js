@@ -72,9 +72,9 @@ app.post('/greet', async function (req, res) {
 else if (enterName ==="" && language){
     req.flash('info', 'Please type in your name.');
 }
-else if(regEx.test && language){
-    req.flash('info', 'Only alphabets allowed,please type your name correctly');
-}
+// else if(regEx.test && language){
+//     req.flash('info', 'Only alphabets allowed,please type your name correctly');
+// }
     else {
         if (enterName && language) {
             greetApp.greetings(req.body.language, req.body.enterName);
@@ -114,7 +114,7 @@ app.get('/counter/:enterName', (req, res) => {
 
 })
 
-const PORT = process.env.PORT || 3020;
+const PORT = process.env.PORT || 3050;
 
 app.listen(PORT, function () {
     console.log("app started at", PORT)

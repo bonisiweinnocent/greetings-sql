@@ -45,7 +45,7 @@ module.exports = function greet(pool) {
 
 
     async function countNames() {
-        let objNames = await pool.query('SELECT COUNT (*) FROM users')
+        let objNames = await pool.query('SELECT DISTINCT name FROM users')
 
         return objNames.rowCount;
 
@@ -61,7 +61,7 @@ module.exports = function greet(pool) {
     }
 
     async function resetBTn() {
-        let reset = await pool.query('DELETE * FROM users')
+        let reset = await pool.query('DELETE FROM users')
         return reset.rows;
 
     }
