@@ -37,7 +37,7 @@ describe('The greetings web app', function () {
 
     });
 
-    it('should able to check the duplication of data entry', async function () {
+    it('should able to count names greeted', async function () {
         let theGreet= Greet(pool);
         await theGreet.store('Mandy');
         await theGreet.store('Lorna')
@@ -51,6 +51,9 @@ describe('The greetings web app', function () {
         
         assert.equal(0,  await theGreet.resetBTn());
 
+    });
+    after(function(){
+        pool.end();
     });
 
 });
