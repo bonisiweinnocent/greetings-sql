@@ -62,8 +62,7 @@ async function singleName(take){
     } else {
         await  updateCounter(allRows)
     }
-    // let single = allRows.rows
-    // return single[0].counter
+
 
 
 }
