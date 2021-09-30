@@ -60,25 +60,31 @@ app.use(flash());
 
 app.post('/greet', async function (req, res) {
     var msg = ""
+    setTimeout(function () {
+        msg = greetApp.timer()
+
+    }, 3000);
+    
+    
     let regEx =  /^[A-Za-z]+$/;
     const enterName = req.body.enterName;
     const language = req.body.language
-    if (enterName === "" && !language) {
+    if (enterName ==="" && !language) {
         req.flash('info', 'Please type in your name and select a language.');
     }
-    else if(enterName ==="" && !language){
+    else if(enterName  && !language){
         req.flash('info', 'Please  select a language.');  
     }
 else if (enterName ==="" && language){
     req.flash('info', 'Please type in your name.');
 }
-// else if(regEx.test && language){
-//     req.flash('info', 'Only alphabets allowed,please type your name correctly');
-// }
+else if(!regEx.test(enterName) && language){
+     req.flash('info', 'Only alphabets allowed,please type your name correctly.');
+}
     else {
         if (enterName && language) {
             greetApp.greetings(req.body.language, req.body.enterName);
-            await greetApp.store(enterName)
+            await greetApp.singleName(enterName)
             msg = greetApp.getMsg()
 
         }
@@ -88,33 +94,39 @@ else if (enterName ==="" && language){
 });
 
 
-app.post('index', function (req, res) {
-
-
+app.post('/counterReset',  async function (req, res) {
+let reset = req.body.buttonNames
+// if (reset) {
+//     greetApp.resetBTn(req.body.buttonNames);
+//     // req.flash('info', 'Please type in your name and select a language.');
+// }
+    res.render('index',{reset3: await greetApp.resetBTn()})
 
 });
 
-app.post('/greetings', (req, res) => {
+app.post('/greetings', async function(req, res)  {
 
 
-    res.render('greetings', { namesGreeted:  greetApp.storeArray() })
+    res.render('greetings', { namesGreeted: await greetApp.storeArray() })
 
 
 })
 
 
-app.get('/counter/:enterName', (req, res) => {
+app.get('/counter/:enterName', async function(req, res)  {
     var name = req.params.enterName
-    var namesList = greetApp.storeArray()
+    var namesList = await  greetApp.getCounter(name)
+
+    // console.log(namesList)
 
     res.render('counter', {
         name: name,
-        personsCounter: namesList[name]
+        personsCounter: namesList
     })
 
 })
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 2000;
 
 app.listen(PORT, function () {
     console.log("app started at", PORT)

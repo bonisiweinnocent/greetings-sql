@@ -37,6 +37,7 @@ module.exports = function greet(pool) {
 
 
     async function store(userName) {
+        
         let names = await pool.query('INSERT INTO  users(name,counter) VALUES ($1,$2)', [userName, 1])
         return names.rows;
     }
@@ -51,35 +52,60 @@ module.exports = function greet(pool) {
 
 
     }
-    function timer() {
-        return "";
+   
+async function singleName(take){
+    var allRows = take.charAt(0).toUpperCase() + take.slice(1).toLowerCase();
+    let duplicate = await pool.query('SELECT * FROM users WHERE name = $1',[allRows])
+    // console.log({duplicate})
+    if(duplicate.rowCount===0){
+        await store(allRows)
+    } else {
+        await  updateCounter(allRows)
     }
+    // let single = allRows.rows
+    // return single[0].counter
 
+
+}
     async function storeArray() {
-        let allNames = await pool.query('SELECT * FROM USERS')
+        let allNames = await pool.query('SELECT name FROM users')
+     
         return allNames.rows;
+        
     }
 
+    async function getCounter(name) {
+        const count = await pool.query('select counter from users where name = $1', [name]);
+        console.log(count.rows[0])
+
+        return count.rows[0].counter;
+
+    }
+
+    async function updateCounter(name){
+         await pool.query('update users set counter = counter + 1 where name  = $1', [name])
+    }
     async function resetBTn() {
         let reset = await pool.query('DELETE FROM users')
         return reset.rows;
 
+    }
+    function timer() {
+        return "";
     }
 
 
     return {
         greetings,
         getMsg,
-        // errorsNoName,
-        // languageErrors,
-        // bothError,
         errorSpecial,
         store,
         countNames,
-        timer,
         storeArray,
-        // storageError,
-        resetBTn
+        resetBTn,
+        timer,
+        getCounter,
+        singleName
 
     }
 

@@ -11,19 +11,22 @@
 <body>
     <div class="container">
 
-<div class="row">
-    <h1>Greeted Names</h1>
+        <div class="row">
+            <h1>Greeted Names</h1>
 
-{{#each namesGreeted }}
-<a href="/counter/{{@key}}"><li>{{@key}}</li></a>
-{{/each}}
+
+            {{#each namesGreeted }}
+            <a href="/counter/{{name}}">
+                <li>{{name}}</li>
+            </a>
+            {{/each}} 
         
-        </ul>
- <br>
- <br>
- <br>
- <a href="/">Back</a>
-</div>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <a href="/">Back</a>
+        </div>
 </body>
 
 </html>

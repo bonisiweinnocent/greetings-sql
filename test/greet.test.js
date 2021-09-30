@@ -47,7 +47,7 @@ describe('The greetings web app', function () {
 
     it('should able to reset the page', async function () {
         let theGreet= Greet(pool);
-        await theGreet.storeArray();
+        // await theGreet.storeArray();
         
         assert.equal(0,  await theGreet.resetBTn());
 
