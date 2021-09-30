@@ -2,7 +2,7 @@
 'use strict';
 
 const flash = require('express-flash');
-const session = require('express-session');
+var session = require('cookie-session');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser')
@@ -18,11 +18,14 @@ let local = process.env.LOCAL || false;
 if (process.env.DATABASE_URL && !local) {
     useSSL = true;
 }
-const connectionString = process.env.DATABASE_URL || 'postgresql://bonisiwecukatha:pg123@localhost:5432/names_greeted';
 
 const pool = new Pool({
-    connectionString,
-    ssl: useSSL
+    connectionString: process.env.DATABASE_URL || 'postgresql://bonisiwecukatha:pg123@localhost:5432/names_greeted',
+
+    ssl: {
+        useSSL,
+        rejectUnauthorized: false
+    }
 });
 
 
