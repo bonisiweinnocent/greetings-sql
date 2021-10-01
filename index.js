@@ -65,7 +65,6 @@ app.use(flash());
 app.post('/greet', async function (req, res) {
     var msg = ""
   
-    console.log('---------inside post -----------')
     
     let regEx =  /^[A-Za-z]+$/;
     const enterName = req.body.enterName;
