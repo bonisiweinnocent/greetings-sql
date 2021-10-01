@@ -65,11 +65,12 @@ app.use(flash());
 app.post('/greet', async function (req, res) {
     var msg = ""
   
-    
+    console.log('---------inside post -----------')
     
     let regEx =  /^[A-Za-z]+$/;
     const enterName = req.body.enterName;
     const language = req.body.language
+   try {
     if (enterName ==="" && !language) {
         req.flash('info', 'Please type in your name and select a language.');
     }
@@ -92,6 +93,10 @@ else if(!regEx.test(enterName) && language){
     }
 
     res.render('index', { msg, counter: await greetApp.countNames() })
+   } catch (error) {
+       console.log({error});
+       res.redirect('/')
+   }
 });
 
 
