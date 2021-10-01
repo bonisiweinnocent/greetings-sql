@@ -2,7 +2,7 @@
 'use strict';
 
 const flash = require('express-flash');
-var session = require('cookie-session');
+const session = require('express-session');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser')
@@ -21,11 +21,12 @@ if (process.env.DATABASE_URL && !local) {
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL || 'postgresql://bonisiwecukatha:pg123@localhost:5432/names_greeted',
+    ssl: { rejectUnauthorized: false }
 
-    ssl: {
-        useSSL,
-        rejectUnauthorized: false
-    }
+    // ssl: {
+    //     useSSL,
+    //     rejectUnauthorized: false
+    // }
 });
 
 
@@ -63,10 +64,7 @@ app.use(flash());
 
 app.post('/greet', async function (req, res) {
     var msg = ""
-    setTimeout(function () {
-        msg = greetApp.timer()
-
-    }, 3000);
+  
     
     
     let regEx =  /^[A-Za-z]+$/;
@@ -99,10 +97,7 @@ else if(!regEx.test(enterName) && language){
 
 app.post('/counterReset',  async function (req, res) {
 let reset = req.body.buttonNames
-// if (reset) {
-//     greetApp.resetBTn(req.body.buttonNames);
-//     // req.flash('info', 'Please type in your name and select a language.');
-// }
+
     res.render('index',{reset3: await greetApp.resetBTn()})
 
 });
@@ -120,7 +115,7 @@ app.get('/counter/:enterName', async function(req, res)  {
     var name = req.params.enterName
     var namesList = await  greetApp.getCounter(name)
 
-    // console.log(namesList)
+  
 
     res.render('counter', {
         name: name,

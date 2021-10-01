@@ -89,9 +89,7 @@ async function singleName(take){
         return reset.rows;
 
     }
-    function timer() {
-        return "";
-    }
+    
 
 
     return {
@@ -102,7 +100,6 @@ async function singleName(take){
         countNames,
         storeArray,
         resetBTn,
-        timer,
         getCounter,
         singleName
 
