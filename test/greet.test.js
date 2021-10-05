@@ -45,7 +45,7 @@ describe('The greetings web app', function () {
 
     });
 
-    it('should able to reset the page', async function () {
+    it('should able to reset the database', async function () {
         let theGreet= Greet(pool);
         // await theGreet.storeArray();
         

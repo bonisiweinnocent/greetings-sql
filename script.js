@@ -19,22 +19,12 @@ module.exports = function greet(pool) {
             msg = "Molo, " + param1;
         }
     }
-    function errorSpecial() {
-
-        return "Please type only letters."
-    }
+  
 
     function getMsg() {
         return msg
     }
-    // async function bothError(name, language) {
-    //     let empty = await pool.query('')
-    //     if (name === "" && !language) {
-    //         return empty.rows;
-
-    //     }
-    // }
-
+   
 
     async function store(userName) {
         
@@ -56,7 +46,6 @@ module.exports = function greet(pool) {
 async function singleName(take){
     var allRows = take.charAt(0).toUpperCase() + take.slice(1).toLowerCase();
     let duplicate = await pool.query('SELECT * FROM users WHERE name = $1',[allRows])
-    // console.log({duplicate})
     if(duplicate.rowCount===0){
         await store(allRows)
     } else {
@@ -95,7 +84,6 @@ async function singleName(take){
     return {
         greetings,
         getMsg,
-        errorSpecial,
         store,
         countNames,
         storeArray,
