@@ -21,6 +21,40 @@ describe('The greetings web app', function () {
        
     });
 
+   
+    it('should be able to greet Bonny correctly in  IsiXhosa', function () {
+        var theGreet = Greet(pool);
+        var word = "Bonny"
+        var contain = "IsiXhosa"
+
+        theGreet.greetings(contain, word)
+       
+        assert.equal("Molo, Bonny", theGreet.getMsg());
+
+
+    });
+    it('should be able to greet Thabo correctly in  French', function () {
+        var theGreet = Greet(pool);
+        var word = "Thabo"
+        var contain = "French"
+
+        theGreet.greetings(contain, word)
+       
+        assert.equal("Bonjour, Thabo", theGreet.getMsg());
+
+
+    });
+    it('should be able to greet Mila correctly in  Swahili', function () {
+        var theGreet = Greet(pool);
+        var word = "Thabo"
+        var contain = "Swahili"
+
+        theGreet.greetings(contain, word)
+       
+        assert.equal("Jambo, Thabo", theGreet.getMsg());
+
+
+    });
     it('should able to store names greeted', async function () {
         let theGreet= Greet(pool);
         await theGreet.store('Mandy');
@@ -28,14 +62,15 @@ describe('The greetings web app', function () {
 
     });
 
-    it('should able to check the duplication of data entry', async function () {
-        let theGreet= Greet(pool);
-        await theGreet.store('Mandy');
-        await theGreet.store('Mandy');
-        await theGreet.store('Mandy');
-        assert.deepEqual(1,  await theGreet.countNames());
 
-    });
+    // it('should able to check the duplication of data entry', async function () {
+    //     let theGreet= Greet(pool);
+    //     await theGreet.store('Mandy');
+    //     await theGreet.store('Mandy');
+    //     await theGreet.store('Mandy');
+    //     assert.deepEqual(1,  await theGreet.singleName());
+
+    // });
 
     it('should able to count names greeted', async function () {
         let theGreet= Greet(pool);
@@ -45,7 +80,7 @@ describe('The greetings web app', function () {
 
     });
 
-    it('should able to reset the database', async function () {
+    it('should be able  to reset the database', async function () {
         let theGreet= Greet(pool);
         // await theGreet.storeArray();
         
@@ -56,3 +91,9 @@ describe('The greetings web app', function () {
         pool.end();
     });
 });
+
+
+
+// nameList,
+// getCounter,
+// singleName

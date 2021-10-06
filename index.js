@@ -101,6 +101,9 @@ else if(!regEx.test(enterName) && language){
 
 app.post('/counterReset',  async function (req, res) {
 let reset = req.body.buttonNames
+if (reset){
+    req.flash('key','Database succefully cleared!');
+}
 
     res.render('index',{reset3: await greetApp.resetBTn()})
 
@@ -109,7 +112,7 @@ let reset = req.body.buttonNames
 app.post('/greetings', async function(req, res)  {
 
 
-    res.render('greetings', { namesGreeted: await greetApp.storeArray() })
+    res.render('greetings', { namesGreeted: await greetApp.nameList() })
 
 
 })
