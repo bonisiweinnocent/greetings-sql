@@ -10,15 +10,17 @@ if (errorsElement.innerHTML !== '' ) {
     }, 3000);
     
 }
+if (roseElement.innerHTML !==''){
+    setTimeout(function(){
+        roseElement.innerHTML = '';
+    },3000);
+}
+
 if (errorsElement1.innerHTML !== '' ) {
     setTimeout(function () {
         errorsElement1.innerHTML = '';
     }, 3000);
     
 }
-if (roseElement.innerHTML !==''){
-    setTimeout(function(){
-        roseElement.innerHTML = '';
-    },4000);
-}
+
 });

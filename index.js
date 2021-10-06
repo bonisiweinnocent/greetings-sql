@@ -131,7 +131,7 @@ app.get('/counter/:enterName', async function(req, res)  {
 
 })
 
-const PORT = process.env.PORT || 2001;
+const PORT = process.env.PORT || 2002;
 
 app.listen(PORT, function () {
     console.log("app started at", PORT)
