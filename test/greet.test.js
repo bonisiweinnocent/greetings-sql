@@ -63,14 +63,14 @@ describe('The greetings web app', function () {
     });
 
 
-    // it('should able to check the duplication of data entry', async function () {
-    //     let theGreet= Greet(pool);
-    //     await theGreet.store('Mandy');
-    //     await theGreet.store('Mandy');
-    //     await theGreet.store('Mandy');
-    //     assert.deepEqual(1,  await theGreet.singleName());
+    it('should able to check the duplication of names greeted', async function () {
+        let theGreet= Greet(pool);
+        await theGreet.store('Mandy');
+        await theGreet.store('Mandy');
+        await theGreet.store('Mandy');
+        assert.deepEqual(1,  await theGreet.countNames());
 
-    // });
+    });
 
     it('should able to count names greeted', async function () {
         let theGreet= Greet(pool);

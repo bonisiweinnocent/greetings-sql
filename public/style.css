@@ -5,18 +5,14 @@
 body {
 
 background-color: dimgray;
-/* padding: 1rem;
-margin: 0.5rem;
-border: 14px solid yellow;
-/* border-bottom-left-radius: 12rem; */
-/* box-shadow: 10px 10px;  */
+
     
    
 }
 .head h1{
 
    padding-bottom: 2rem;
-   padding-left: 23rem;
+   padding-left: 28rem;
    margin-top: 5rem;
    font-size: 3rem;
 }
@@ -31,6 +27,9 @@ border: 14px solid yellow;
     padding-left: 26rem;
    
 }
+.rowgreet{
+    align-content: center;
+}
 .area .count{
     display: flex;
 }
@@ -44,7 +43,7 @@ border: 14px solid yellow;
 
 }
 .row h5{
-    padding-left: 26rem;
+    padding-left: 35rem;
     padding-top: 2rem;
     margin-bottom: 2rem;
     
@@ -53,13 +52,18 @@ border: 14px solid yellow;
     border-color: red;
     border-width: 5px;
     margin-left: 21rem;
-    margin-right: 21rem;
-    padding-left: 13rem;
+    /* margin-right: 21rem; */
+    padding-left: 25rem;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+    text-align: center;
+
     /* padding-right: 3rem; */
 
 }
 .count{
-    padding-left: 35rem;
+    margin-top: 1rem;
+    padding-left: 37rem;
 }
 .radios{
     width: 27px;
@@ -67,13 +71,14 @@ border: 14px solid yellow;
    
 }
 
-.container{
+/* .container{ */
     /* padding: -5rem; */
-    margin: 2rem;
-    border: 14px solid yellow;
+    /* margin: 2rem; */
+    /* border: 14px solid yellow; */
     /* border-bottom-left-radius: 12rem; */
-    box-shadow: 10px 10px;
-}
+    /* box-shadow: 10px 10px; */
+/* } */
+
 
 .red-text{
     color: red;
@@ -123,9 +128,15 @@ border: 14px solid yellow;
    
 }
 .greetbtn {
-    margin-left: 45rem;
+    margin-left: 25rem;
     display: flex;
   
+
+}
+
+.radioBtn{
+    margin-left: 7rem;
+
 
 }
 
@@ -189,6 +200,7 @@ margin: 5px;
     margin-left: 1rem;
     /* margin-right: 1rem; */
     padding-left: 1rem;
+    
     /* padding-right: 8rem; */
 
 }
