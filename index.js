@@ -8,11 +8,12 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser')
 const greet = require('./script');
 const app = express();
+const routes = require('./routes/routes')
 
 const pg = require("pg");
 const Pool = pg.Pool;
 
-// should we use a SSL connection
+// should we use a SSL connectiongree
 let useSSL = false;
 let local = process.env.LOCAL || false;
 if (process.env.DATABASE_URL && !local) {
@@ -31,6 +32,7 @@ const pool = new Pool({
 
 
 const greetApp = greet(pool);
+const Instance = routes(greetApp)
 app.use(express.static('public'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -63,74 +65,18 @@ app.use(session({
 app.use(flash());
 
 
-app.post('/greet', async function (req, res) {
-    var msg = ""
-  
-    
-    let regEx =  /^[A-Za-z]+$/;
-    const enterName = req.body.enterName;
-    const language = req.body.language
-   try {
-    if (enterName ==="" && !language) {
-        req.flash('info', 'Please type in your name and select a language.');
-    }
-    else if(enterName  && !language){
-        req.flash('info', 'Please  select a language.');  
-    }
-else if (enterName ==="" && language){
-    req.flash('info', 'Please type in your name.');
-}
-else if(!regEx.test(enterName) && language){
-     req.flash('info', 'Only alphabets allowed,please type your name correctly.');
-}
-    else {
-        if (enterName && language) {
-            greetApp.greetings(req.body.language, req.body.enterName);
-            await greetApp.singleName(enterName)
-            msg = greetApp.getMsg()
-
-        }
-    }
-
-    res.render('index', { msg })
-   } catch (error) {
-       console.log({error});
-       res.redirect('/')
-   }
-});
+app.post('/greet',Instance.greet1); 
 
 
-app.post('/counterReset',  async function (req, res) {
-let reset = req.body.buttonNames
-if (reset){
-    req.flash('key','Database succefully cleared!');
-}
 
-    res.render('index',{reset3: await greetApp.resetBTn()})
-
-});
-
-app.post('/greetings', async function(req, res)  {
+app.post('/counterReset', Instance.greet2);
 
 
-    res.render('greetings', { namesGreeted: await greetApp.nameList() })
+
+app.post('/greetings', Instance.greet3);
 
 
-})
-
-
-app.get('/counter/:enterName', async function(req, res)  {
-    var name = req.params.enterName
-    var namesList = await  greetApp.getCounter(name)
-
-  
-
-    res.render('counter', {
-        name: name,
-        personsCounter: namesList
-    })
-
-})
+app.get('/counter/:enterName', Instance.greet4);
 
 const PORT = process.env.PORT || 2003;
 
