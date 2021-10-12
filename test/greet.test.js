@@ -63,15 +63,27 @@ describe('The greetings web app', function () {
     });
 
 
-    it('should able to check the duplication of names greeted', async function () {
+    it('should able to count names greeted', async function () {
         let theGreet= Greet(pool);
         await theGreet.store('Mandy');
         await theGreet.store('Mandy');
         await theGreet.store('Mandy');
-        assert.deepEqual(1,  await theGreet.countNames());
+        await theGreet.store('Lorna');
+        assert.deepEqual(2,  await theGreet.countNames());
 
     });
 
+
+
+    it('should able to check if a name already exists and add it if it does not exists the counter should increment,otherwise it should not increment the counter', async function () {
+        let theGreet= Greet(pool);
+        await theGreet.singleName('Mandy');
+        await theGreet.singleName('Mandy');
+        // await theGreet.store('Mandy');
+     
+        assert.deepEqual(1, await theGreet.countNames());
+
+    });
     it('should able to count names greeted', async function () {
         let theGreet= Greet(pool);
         await theGreet.store('Mandy');
@@ -83,7 +95,8 @@ describe('The greetings web app', function () {
     it('should be able  to reset the database', async function () {
         let theGreet= Greet(pool);
         // await theGreet.storeArray();
-        
+        await theGreet.store('Mandy');
+        await theGreet.store('Lorna')
         assert.equal(0,  await theGreet.resetBTn());
 
     });

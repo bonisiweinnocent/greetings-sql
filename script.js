@@ -31,6 +31,10 @@ module.exports = function greet(pool) {
         let names = await pool.query('INSERT INTO  users(name,counter) VALUES ($1,$2)', [userName, 1])
         return names.rows;
     }
+    
+    async function updateCounter(name) {
+        await pool.query('update users set counter = counter + 1 where name  = $1', [name])
+    }
 
 
 
@@ -52,7 +56,7 @@ module.exports = function greet(pool) {
             await updateCounter(allRows)
         }
 
-
+// .............
 
     }
     async function nameList() {
@@ -61,18 +65,16 @@ module.exports = function greet(pool) {
         return allNames.rows;
 
     }
-
+// ...........
     async function getCounter(name) {
         const count = await pool.query('select counter from users where name = $1', [name]);
-        console.log(count.rows[0])
+        // console.log(count.rows[0])
 
         return count.rows[0].counter;
 
     }
 
-    async function updateCounter(name) {
-        await pool.query('update users set counter = counter + 1 where name  = $1', [name])
-    }
+    
     async function resetBTn() {
         let reset = await pool.query('DELETE FROM users')
         return reset.rows;

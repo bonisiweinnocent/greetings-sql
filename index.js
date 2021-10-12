@@ -40,10 +40,11 @@ app.use(bodyParser.json())
 app.engine('handlebars', exphbs({ defaultLayout: 'main', layoutsDir: __dirname + '/views/layouts' }));
 app.set('view engine', 'handlebars');
 
-app.get('/', function (req, res) {
+app.get('/', async function (req, res) {
 
     res.render('index', {
-        greets: greetApp.getMsg(),
+        greets: await greetApp.getMsg(),
+       
         // counterRender: greetApp.getName()
 
 
@@ -91,7 +92,7 @@ else if(!regEx.test(enterName) && language){
         }
     }
 
-    res.render('index', { msg, counter: await greetApp.countNames() })
+    res.render('index', { msg })
    } catch (error) {
        console.log({error});
        res.redirect('/')
@@ -131,7 +132,7 @@ app.get('/counter/:enterName', async function(req, res)  {
 
 })
 
-const PORT = process.env.PORT || 2002;
+const PORT = process.env.PORT || 2003;
 
 app.listen(PORT, function () {
     console.log("app started at", PORT)
