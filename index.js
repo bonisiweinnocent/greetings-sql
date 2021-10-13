@@ -78,7 +78,7 @@ app.post('/greetings', Instance.greet3);
 
 app.get('/counter/:enterName', Instance.greet4);
 
-const PORT = process.env.PORT || 2003;
+const PORT = process.env.PORT || 2000;
 
 app.listen(PORT, function () {
     console.log("app started at", PORT)

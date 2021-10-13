@@ -1,8 +1,9 @@
-module.exports = function greetRoutes(param) {
+// const ProductService = require('../services/product-service');
 
+module.exports = function greetRoutes(greetApp) {
+  
     async function greet1(req, res) {
         var msg = ""
-
 
         let regEx = /^[A-Za-z]+$/;
         const enterName = req.body.enterName;
