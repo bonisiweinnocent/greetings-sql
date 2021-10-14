@@ -1,7 +1,7 @@
 // const ProductService = require('../services/product-service');
 
 module.exports = function greetRoutes(greetApp) {
-  
+
     async function greet1(req, res) {
         var msg = ""
 
@@ -30,37 +30,45 @@ module.exports = function greetRoutes(greetApp) {
                 }
             }
 
-            res.render('index', { msg })
+            res.render('index', { msg , counter: await greetApp.countNames()})
         } catch (error) {
-            console.log({ error });
+            console.log(`greet1 function :==> ${error}` );
             res.redirect('/')
         }
 
     }
     async function greet2(req, res) {
         let reset = req.body.buttonNames
+        
         if (reset) {
             req.flash('key', 'Database succesfully cleared!');
         }
 
         res.render('index', { reset3: await greetApp.resetBTn() })
 
-       
+
     }
-    async function greet3(req, res)  {
+    async function greet3(req, res) {
 
 
         res.render('greetings', { namesGreeted: await greetApp.nameList() })
     }
-    async function greet4(req, res)  {
+    async function greet4(req, res) {
+
         var name = req.params.enterName
-        var namesList = await  greetApp.getCounter(name)
-    
-      
-    
+        var namesList = await greetApp.getCounter(name)
+
+
+
         res.render('counter', {
             name: name,
             personsCounter: namesList
+        })
+    }
+    async function greet5(req, res) {
+
+        res.render('index', {
+            greets: await greetApp.getMsg()
         })
     }
 
@@ -68,7 +76,8 @@ module.exports = function greetRoutes(greetApp) {
         greet1,
         greet2,
         greet3,
-        greet4
+        greet4,
+        greet5
     }
 }
 

@@ -42,17 +42,10 @@ app.use(bodyParser.json())
 app.engine('handlebars', exphbs({ defaultLayout: 'main', layoutsDir: __dirname + '/views/layouts' }));
 app.set('view engine', 'handlebars');
 
-app.get('/', async function (req, res) {
-
-    res.render('index', {
-        greets: await greetApp.getMsg(),
+app.get('/',Instance.greet5); 
        
         // counterRender: greetApp.getName()
 
-
-    })
-
-})
 
 
 // initialise session middleware - flash-express depends on it
